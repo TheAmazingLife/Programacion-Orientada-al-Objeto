@@ -1,5 +1,22 @@
 # Object Oriented Programming
 
+- [Object Oriented Programming](#object-oriented-programming)
+  - [Que es OOP?](#que-es-oop)
+  - [Java Modifiers](#java-modifiers)
+    - [Modifiers/Modificadores](#modifiersmodificadores)
+    - [Access Modifiers](#access-modifiers)
+    - [Non-Access Modifiers](#non-access-modifiers)
+    - [Final, Static y Abstract](#final-static-y-abstract)
+  - [Java Encapsulation](#java-encapsulation)
+    - [Encapsulación.](#encapsulación)
+    - [Get y Set](#get-y-set)
+    - [Beneficios de encapsular](#beneficios-de-encapsular)
+  - [Java Packages](#java-packages)
+    - [Java Packages & API](#java-packages--api)
+    - [Built-in Packages](#built-in-packages)
+    - [Importar una clase](#importar-una-clase)
+    - [Importar un paquete](#importar-un-paquete)
+
 ## Que es OOP?
 Programacion Procedural: crear metodos o operaciones en la Data
 Object Oriented Programming: creacion de objetos que contienen ambos, data y metodos
@@ -116,20 +133,20 @@ Los modificadores se dividen en 2 grupos:
 **Syntaxis**: Access + Non-Access + Type + Name(Parameters);
 
 ### Access Modifiers
-#### Clases
+#### Clases <!-- omit in toc -->
   > - `public` - Esta clase es accesible por cualquier otra clase
   > - *default* - La clase solo es accesible por clases del mismo paquete. Es usado cuando no se especifica el modificador.
-#### Atributos, Metodos y Constructores
+#### Atributos, Metodos y Constructores <!-- omit in toc -->
   > - `public` - el codigo es accesible para todas las clases
   > - `private` - el codigo es solo accesible en la clase declarada
   > - *default* - el codigo es accesible solo en el mismo paquete. Es usado cuando no se especifica el modificador.
   > - `protected` - El codigo es accesible en el mismo paquete y **subclases**
 
 ### Non-Access Modifiers
-#### Clases
+#### Clases <!-- omit in toc -->
   > - `final` - la clase no podra ser heredada por otras clases
   > - `abstract` - la clase no puede ser usada para crear objetos
-#### Atributos y Metodos
+#### Atributos y Metodos <!-- omit in toc -->
   > - `final` - atributos y metodos no pueden ser sobreescritos/modificados
   > - `static` - atributos y metodos pertenecen a la clase, en lugar del abstract
   > - `abstract` - solo podran ser usadas en una clase abstracta, y solo usada en metodos. El metodo no debe tener un cuerpo, por ejemplo: **abstract void aña();** El cuerpo es proporcionado por la subclase.
