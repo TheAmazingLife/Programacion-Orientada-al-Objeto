@@ -2,7 +2,23 @@
 
 - [Object Oriented Programming](#object-oriented-programming)
   - [Que es OOP?](#que-es-oop)
-  - [La cual hara referencia al objeto actual y a sus atributos](#la-cual-hara-referencia-al-objeto-actual-y-a-sus-atributos)
+    - [Que son las clases/objetos?](#que-son-las-clasesobjetos)
+  - [Clases y Objetos em Java](#clases-y-objetos-em-java)
+    - [Creacion de clases](#creacion-de-clases)
+    - [Creacion de Objetos](#creacion-de-objetos)
+    - [Uso multiple de clases](#uso-multiple-de-clases)
+  - [Java Class Attributes](#java-class-attributes)
+    - [Atributos en Java](#atributos-en-java)
+    - [Aceso a los atributos](#aceso-a-los-atributos)
+    - [Modificar atributos](#modificar-atributos)
+  - [Java Class Methods](#java-class-methods)
+    - [Metodos en Java](#metodos-en-java)
+    - [Metodos Publicos vs Estaticos](#metodos-publicos-vs-estaticos)
+  - [- Una clase debe coincidir con el nombre del archivo (Main and Main.java).](#--una-clase-debe-coincidir-con-el-nombre-del-archivo-main-and-mainjava)
+  - [Java Constructors](#java-constructors)
+    - [Constructores en Java](#constructores-en-java)
+    - [Parametros del contructor](#parametros-del-contructor)
+  - [- Para asignar al atributo una variable con el mismo nombre podemos ocupar la palabra clave `this.` La cual hara referencia al objeto actual y a sus atributos.](#--para-asignar-al-atributo-una-variable-con-el-mismo-nombre-podemos-ocupar-la-palabra-clave-this-la-cual-hara-referencia-al-objeto-actual-y-a-sus-atributos)
   - [Java Modifiers](#java-modifiers)
     - [Modifiers/Modificadores](#modifiersmodificadores)
     - [Access Modifiers](#access-modifiers)
@@ -27,33 +43,50 @@
     - [Polimorfismo en Java](#polimorfismo-en-java)
 ---
 ## Que es OOP?
-Programacion Procedural: crear metodos o operaciones en la Data
-Object Oriented Programming: creacion de objetos que contienen ambos, data y metodos
+- **Programacion Procedural**: crear metodos o operaciones en base a datos.
+- **Object Oriented Programming**: creacion de objetos que contienen ambos, datos y metodos.
 
-Beneficios: Facil de ejecutar, estructura clara, DRY "Don't Repeat Yourself" code haciendo mas facil su mantencion, modificacion y eventual debugging
+**Beneficios**: Facil de ejecutar, estructura clara, DRY "Don't Repeat Yourself" code haciendo mas facil su mantencion, modificacion y eventual debugging
 
-~Classes/Objects~
-Clase: Una clase es una plantilla para los objetos
-Objeto:
-Es una instancia a una clase
-Al crear un objeto se heredan todas los atributos(variables) y metodos de la clase.
+>**Tip:** "Don't Repeat Yourself" (DRY) o "No te repetitas", consiste en reducir la repeticion de codigo. Extrayendo los codigod comunes en la aplicacion y colocarlos en un solo lugar y reutilizarlos en lugar de repetirlos.
+### Que son las clases/objetos?
+Clases y objetos son los dos aspectos principales de la programacion orientada a objeto.
 
-Un auto es un objeto, y este auto tiene atributos los cuales pueden ser, color, marca, al igual tiene metodos como, manejar, frenar...
+>Una clase es una plantilla de objetos y un objeto es una instancia de una clase. Cuando se crean Objetos individuales, heredan todas los atributos y metodos de la clase.
 
-Creacion de clases
-Para crear una clase se utilza la palabra reservada: class
-Una clase siempre debe comenzar con una primera letra mayúscula, y que el nombre del archivo java debe coincidir con el nombre de la clase.
+| Clase | Objeto |
+| ----- | ------ |
+| Auto  | Volvo  |
+|       | Audi   |
+|       | Toyota |
+
+---
+## Clases y Objetos em Java
+Java es un lenguaje orientado al objeto.
+
+Todo en java esta asociado a clases y objetos, junto con sus atributos y metodos. Por enemplo: En la vida real un auto es un objeto, y este auto tiene **atributos** los cuales pueden ser, color, marca, al igual tiene **metodos** como, manejar, frenar...
+
+Una clase es como un constructor de objetos, o una "base" para su creacion.
+
+- Clase: Una clase es una plantilla para los objetos
+- Objeto: Es una instancia a una clase, al crear un objeto se heredan todas los atributos (variables) y metodos de la clase.
+
+### Creacion de clases
+Para crear una clase se utilza la palabra reservada: `class` Una clase siempre debe comenzar con una primera letra mayúscula, y que el nombre del archivo java debe coincidir con el nombre de la clase.
 Example:
-Create a class named *Main* with a variable x:
+>Creacion de clase llamada "`Main`" con una variable x:
+```java
 public class Main {
   int x = 5;
 }
+```
 
-Creacion de Objetos
-Para crear un objeto necesitamos, especificar el nombre de la clase *clase*, seguido del nombre del objeto y utilizando la palabra clave *new*.
+### Creacion de Objetos
+Para crear un objeto necesitamos, especificar el nombre de la clase `clase`, seguido del nombre del objeto y utilizando la palabra clave `new`.
+
 Se pueden crear multiples objetos en una clase y tratarlos.
-Example
-Create an object called *myObj* and print the value of x:
+>Ejemplo: Creacion de objeto llamado `myObj` y impresion del valor de x:
+```java
 public class Main {
   int x = 5;
 
@@ -64,71 +97,167 @@ public class Main {
     System.out.println(myObj2.x);
   }
 }
-
-También se puede crear un objeto de una clase y acceder a él en otra clase. Esto se utiliza a menudo para una mejor organización de las clases (una clase tiene todos los atributos y métodos, mientras que la otra clase contiene el método main() (código a ejecutar)).
+```
+### Uso multiple de clases
+También se puede crear un objeto de una clase y acceder a él en otra clase. Esto se utiliza a menudo para una mejor organización de las clases (una clase tiene todos los atributos y métodos, mientras que la otra clase contiene el método `main()` (código a ejecutar)).
 
 Recuerda que el nombre del archivo java debe coincidir con el nombre de la clase. En este ejemplo, hemos creado dos archivos en el mismo directorio/carpeta:
+- Main.java
+- Segundo.java
 
-Main.java
-Segundo.java
-
-Main.java
+```java
+// Main.java
 public class Main {
   int x = 5;
 }
-Second.java
+```
+```java
+// Second.java
 class Second {
   public static void main(String[] args) {
     Main myObj = new Main();
     System.out.println(myObj.x);
   }
 }
+```
+```cmd
+#Debemos de compilar ambos archivos
+C:\Users\Your Name>javac Main.java
+C:\Users\Your Name>javac Second.java
 
-~Java Class Attributes~
-Cuando hablamos de un objeto en OOP, las *variables* de cada objeto las llamamos Atributos, en otras palabras, los atributos son las variables de una clase
-(otro termino para referirse a los atributos es campos o *filds*)
+#Ejecutamos Second.java
+C:\Users\Your Name>java Second
+
+#Output:
+5
+```
+---
+## Java Class Attributes
+### Atributos en Java
+Cuando hablamos de un objeto en OOP, las "variables" de cada objeto las llamamos **Atributos**, en otras palabras, los atributos son las variables de una clase.
+
 Podemos espeficar tantos atributos como queramos.
+>Otro termino para referirse a los atributos es campos o **filds**
+>Clase llamada "`Main`" con dos atributos: `x` y `y`:
+```java
+public class Main {
+  int x = 5;
+  int y = 3;
+}
+```
+### Aceso a los atributos
+Para acceder a los atributos de un objeto lo hacemos mediante la sintaxis (`.`):
 
-Aceso a los atributos
-Para acceder a los atributos de un objeto lo hacemos mediante la sintaxis (.)
+>Ejemplo: Creacion de objeto "`myObjet`" y imprimir el valor de `x`:
+```java
+public class Main {
+  int x = 5;
 
-Modificar atributos
+  public static void main(String[] args) {
+    Main myObj = new Main();
+    System.out.println(myObj.x);
+  }
+}
+```
+### Modificar atributos
 Podemos modificar los atributos de un objeto o sobreescribirlos, en el caso de que sean modificables.
-En caso contrario si nosotros queremos que una variable no sea modificable la asignamos como *final*.
-final int edad = 20;
-(La palabra clave *final* es llamada un *modifier*)
 
-En caso de tener multiples objetos podemos modificar o acceder a cada uno individualmente, sin afectar a los demas
+En caso contrario si nosotros queremos que una variable no sea modificable la asignamos como `final`.
+>La palabra clave `final` es llamada un **modifier** o **modificador**.
 
-~Java Class Methods~
-Los metodos los declaramos dentro de una clase y estos se utilizan para realizar ciertas acciones
-Para llamar un metodo podemos o hacerlo directamente en una clase o llamarlo mediante el nombre del objeto (.) el nombre del metodo, en ambos casos escribimos el nombre del metodo seguido de () y un ; 
+En caso de tener multiples objetos podemos modificar o acceder a cada uno individualmente, sin afectar a los demas.
+```java
+public class Main {
+  final int x = 10;
+  int y = 20;
 
-Metodos Publicos vs Estaticos
-A menudo en Java tenemos metodos o atributos que pueden ser publicos o estaticos
-*public* Los métodos públicos deben ser llamados por la creación de objetos 
-*static* Los métodos estáticos se pueden llamar sin crear objetos
+  public static void main(String[] args) {
+    Main myObj = new Main();
+    myObj.x = 25; // will generate an error: cannot assign a value to a final variable
+    myObj.y = 15;
+    System.out.println(myObj.y); //imprimira el nuevo valor de y
+  }
+}
+```
+---
+## Java Class Methods
+### Metodos en Java
+Los metodos los declaramos dentro de una clase y estos se utilizan para realizar ciertas acciones.
 
+Para llamar un metodo podemos o hacerlo directamente en una clase o llamarlo mediante el nombre del objeto `.` el nombre del metodo, en ambos casos escribimos el nombre del metodo seguido de `()` y un `;` 
+
+```java
+public class Main {
+  static void miMetodo() {
+    Sytem.out.println("llamada del metodo");
+  }
+
+  public void miMetodoSaluda() {
+    Sytem.out.println("Hola Mundo!");
+  }
+
+  public static void main(String[] args) {
+    Main myObj = new Main();
+    miMetodo(); //al ser un metodo estatico podemos acceder a el sin crear un objeto.
+    miObjeto.miMetodoSaluda(); //llamamos al metodo mediante el objeto
+  }
+}
+```
+
+### Metodos Publicos vs Estaticos
+A menudo en Java tenemos metodos o atributos que pueden ser **publicos** o **estaticos**:
+- `public` Los métodos públicos solo pueden ser llamados mediante la creación y acceso de objetos.
+- `static` Los métodos estáticos se pueden llamar sin crear objetos.
+
+```java
+// Creacion de la clase main
+public class Main {
+  int x;  // Creacion del atributo x
+  // Constructor de la clase Main
+  public Main() {
+    x = 5;  // Asigna el valor incial del atributo x;
+  }
+  public static void main(String[] args) {
+    Main miObj = new Main(); //Crea un objeto de la clase main (este llama al constructor)
+    System.out.println(miObj.x); // Imprime el valor de x
+  }
+}
+```
 Es una buena práctica crear un objeto de una clase y acceder a él en otra clase.
 
-*Tener en mente*
-El punto (.) se utiliza para acceder a los atributos y métodos del objeto.
-Para llamar a un método en Java, escriba el nombre del método seguido de un conjunto de paréntesis (), seguido de un punto y coma (;).
-A class must have a matching filename (Main and Main.java).
+> **Tener en mente**
+- El punto `.` se utiliza para acceder a los atributos y métodos del objeto.
+- Para llamar a un método en Java, escriba el nombre del método seguido de un conjunto de paréntesis `()`, seguido de un punto y coma (`;`).
+- Una clase debe coincidir con el nombre del archivo (Main and Main.java).
+---
+## Java Constructors
+### Constructores en Java
+Un constructor en Java es un **método especial** que se utiliza para inicializar objetos. El constructor es llamado cuando se crea un objeto de una clase. Se puede utilizar para establecer los valores iniciales de los atributos del objeto.
 
-~Java Constructors~
-Un constructor en Java es un método especial que se utiliza para inicializar objetos. El constructor es llamado cuando se crea un objeto de una clase. Se puede utilizar para establecer los valores iniciales de los atributos del objeto.
+ - El metodo constructor debe tener el mismo nombre que la clase y no debe tener tipo retorno (no incluir el `void`).
+ - El constructor es llamado cuando el objeto es creado.
+ - Todas las clases tienen un constructor por defecto, en caso de no crearlo nosotros java lo hace automaticamente sin enmbargo no podremos declarar los valores iniciales para nuestros atributos
 
-El metodo constructor debe tener el mismo nombre que la clase y no debe tener tipo retorno (no incluir el *void*)
-El constructor es llamado cuando el objeto es creado
-Todas las clases tienen un constructor por defecto, en caso de no crearlo nosotros java lo hace automaticamente sin enmbargo no podremos declarar los valores iniciales para nuestros atributos
-
-Parametros del contructor
+### Parametros del contructor
 Los metodos constructores pueden contener Parametros de entrada, y ser usado para inicializar los atributos.
-Al llamar al constructor pasamos el parameto al constructor y pasar la cantidad de parametros que nosotros queramos
+Al llamar al constructor pasamos el parameto al constructor y pasar la cantidad de parametros que nosotros queramos.
 
-Para asignar al atributo una variable con el mismo nombre podemos ocupar la palabra clave "this."
-La cual hara referencia al objeto actual y a sus atributos
+```java
+public class Main {
+  int x;
+
+  public Main(int y) {
+    this.x = y; //asinga el valor recibido y y lo asina a x
+  }
+
+  public static void main(String[] args) {
+    Main myObj = new Main(5);
+    System.out.println(myObj.x);
+  }
+}
+```
+
+- Para asignar al atributo una variable con el mismo nombre podemos ocupar la palabra clave `this.` La cual hara referencia al objeto actual y a sus atributos.
 ---
 ## Java Modifiers
 ### Modifiers/Modificadores
