@@ -14,11 +14,9 @@
   - [Java Class Methods](#java-class-methods)
     - [Metodos en Java](#metodos-en-java)
     - [Metodos Publicos vs Estaticos](#metodos-publicos-vs-estaticos)
-  - [- Una clase debe coincidir con el nombre del archivo (Main and Main.java).](#--una-clase-debe-coincidir-con-el-nombre-del-archivo-main-and-mainjava)
   - [Java Constructors](#java-constructors)
     - [Constructores en Java](#constructores-en-java)
     - [Parametros del contructor](#parametros-del-contructor)
-  - [- Para asignar al atributo una variable con el mismo nombre podemos ocupar la palabra clave `this.` La cual hara referencia al objeto actual y a sus atributos.](#--para-asignar-al-atributo-una-variable-con-el-mismo-nombre-podemos-ocupar-la-palabra-clave-this-la-cual-hara-referencia-al-objeto-actual-y-a-sus-atributos)
   - [Java Modifiers](#java-modifiers)
     - [Modifiers/Modificadores](#modifiersmodificadores)
     - [Access Modifiers](#access-modifiers)
@@ -28,7 +26,6 @@
     - [Encapsulación.](#encapsulación)
     - [Get y Set](#get-y-set)
     - [Beneficios de encapsular](#beneficios-de-encapsular)
-  - [- Incrementar la seguridad de los datos.](#--incrementar-la-seguridad-de-los-datos)
   - [Java Packages](#java-packages)
     - [Java Packages & API](#java-packages--api)
     - [Built-in Packages](#built-in-packages)
@@ -229,6 +226,7 @@ Es una buena práctica crear un objeto de una clase y acceder a él en otra clas
 - El punto `.` se utiliza para acceder a los atributos y métodos del objeto.
 - Para llamar a un método en Java, escriba el nombre del método seguido de un conjunto de paréntesis `()`, seguido de un punto y coma (`;`).
 - Una clase debe coincidir con el nombre del archivo (Main and Main.java).
+  
 ---
 ## Java Constructors
 ### Constructores en Java
@@ -242,6 +240,7 @@ Un constructor en Java es un **método especial** que se utiliza para inicializa
 Los metodos constructores pueden contener Parametros de entrada, y ser usado para inicializar los atributos.
 Al llamar al constructor pasamos el parameto al constructor y pasar la cantidad de parametros que nosotros queramos.
 
+- Para asignar al atributo una variable con el mismo nombre podemos ocupar la palabra clave `this.` La cual hara referencia al objeto actual y a sus atributos.
 ```java
 public class Main {
   int x;
@@ -257,7 +256,6 @@ public class Main {
 }
 ```
 
-- Para asignar al atributo una variable con el mismo nombre podemos ocupar la palabra clave `this.` La cual hara referencia al objeto actual y a sus atributos.
 ---
 ## Java Modifiers
 ### Modifiers/Modificadores
@@ -352,6 +350,7 @@ public class Person {
   - Encapsular puede ser muy util en clases que solo esten hechas para lectura **solo-lectura** (`get` method) o **solo-escritura** (`set` method)
   - Flexibilidad: Al programar podemos cambiar una parte del codigo sin afectar otras partes.
   - Incrementar la seguridad de los datos.
+  
 ---
 ## Java Packages
 ### Java Packages & API
