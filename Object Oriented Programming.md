@@ -2,6 +2,7 @@
 
 - [Object Oriented Programming](#object-oriented-programming)
   - [Que es OOP?](#que-es-oop)
+  - [La cual hara referencia al objeto actual y a sus atributos](#la-cual-hara-referencia-al-objeto-actual-y-a-sus-atributos)
   - [Java Modifiers](#java-modifiers)
     - [Modifiers/Modificadores](#modifiersmodificadores)
     - [Access Modifiers](#access-modifiers)
@@ -11,12 +12,20 @@
     - [Encapsulación.](#encapsulación)
     - [Get y Set](#get-y-set)
     - [Beneficios de encapsular](#beneficios-de-encapsular)
+  - [- Incrementar la seguridad de los datos.](#--incrementar-la-seguridad-de-los-datos)
   - [Java Packages](#java-packages)
     - [Java Packages & API](#java-packages--api)
     - [Built-in Packages](#built-in-packages)
     - [Importar una clase](#importar-una-clase)
     - [Importar un paquete](#importar-un-paquete)
-
+    - [User-defined Packages](#user-defined-packages)
+  - [Java Herencia](#java-herencia)
+    - [Java Inheritance (Subclases y Superclases)](#java-inheritance-subclases-y-superclases)
+    - [Por que ocupar "Herencia"?](#por-que-ocupar-herencia)
+    - [Palabra Clave `final`](#palabra-clave-final)
+  - [Polimorfismo](#polimorfismo)
+    - [Polimorfismo en Java](#polimorfismo-en-java)
+---
 ## Que es OOP?
 Programacion Procedural: crear metodos o operaciones en la Data
 Object Oriented Programming: creacion de objetos que contienen ambos, data y metodos
@@ -120,7 +129,7 @@ Al llamar al constructor pasamos el parameto al constructor y pasar la cantidad 
 
 Para asignar al atributo una variable con el mismo nombre podemos ocupar la palabra clave "this."
 La cual hara referencia al objeto actual y a sus atributos
-
+---
 ## Java Modifiers
 ### Modifiers/Modificadores
 Como ya utilizamos recurrentemente la palabra clave `public` 
@@ -166,10 +175,22 @@ Los modificadores se dividen en 2 grupos:
   //Puede ser llamado como helloWorld() ya que no necesario crear un objeto para llamarlo
 ```
 `Abstract` - Un metodo abstracto pertence a una clase abstracta y no tiene cuerpo. El cuerpo lo proporcionara la subclase.
+
+Ejemplo: Clase abstracta `Hola` que extiende a la subclase `Mundo`, asigna el texto **"Hola Mundo"** a la variable protegida y la imprime.
 ```java
-
+abstract class Hola {
+  protected String texto;
+  public abstract void saludar(); //metodo abstracto
+}
+//Subclase (heredada de la clase hola)
+class Mundo extends Hola {
+  public void saludar() { //cuerpo del metodo abstracto
+    texto = "Hola Mundo";
+    System.out.println(texto);
+  }
+}
 ```
-
+---
 ## Java Encapsulation
 ### Encapsulación.
 Se podria definir **encapsulacion** como, asegurarse de que los datos "sensibles" esten ocultos a los usuarios.
@@ -179,6 +200,7 @@ Para lograrlo:
 
 ### Get y Set
 Como vimos las variables `privadas` solo se pueden acceder dentro de la misma clase.
+
 Sin embargo, podemos acceder a ellos mediante metodos publicos **get** y **set**.
 Los metodos `get` retornan el valor de la variable, y los metodos `set` establecen el valor.
 
@@ -201,7 +223,7 @@ public class Person {
   - Encapsular puede ser muy util en clases que solo esten hechas para lectura **solo-lectura** (`get` method) o **solo-escritura** (`set` method)
   - Flexibilidad: Al programar podemos cambiar una parte del codigo sin afectar otras partes.
   - Incrementar la seguridad de los datos.
-
+---
 ## Java Packages
 ### Java Packages & API
 Un paquete en java se utiliza para agrupar clases relacionadas. Se podria decir que es **una carpeta en un directorio de archivos**. Utilizamos los paquetes para evitar conflictos de nombre y tener un codigo mas facil de mantener. Los paquetes se dividen en dos categorias:
@@ -246,5 +268,133 @@ class MyClass {
 Hay muchos paquetes a elegir, junto con diversos metodos utiles al momento de programar, por ejemplo del paquete `java.util` tambien contiene utilidades para fecha y hora, generar numeros aleatorios, etc.
 
 Para importar un paquete completo, se debe terminar la frase con un asterisco (`*`).
+```java
+import java.util.*;
+```
+### User-defined Packages
+User-defined Packages o Paquetes creados por el usuario).
+Para crear nuestro propio paquete, debemos de comprender como JAVA se utiliza el sistema de directorios de archivos de almacenamiento.
 
+``` java
+└── root
+  └── mypack
+    └── MyPackageClass.java
+```
+Para crear nuestro propio paquete, usamos la palabra clave `package`:
+> MyPackageClass.java
+```java
+package mypack;
+class MyPackageClass {
+  public static void main(String[] args) {
+    System.out.println("This is my package!");
+  }
+}
+```
+Guardamos el archivo como **MyPackageClass.java** y compilamos
+```cmd
+C:\Users\Your Name>javac MyPackageClass.java
+C:\Users\Your Name>javac -d . MyPackageClass.java
+```
+Cuando el paquete este compilado, una nueva carpeta sera creada y llamada "mypack".
+
+Para ejecutar **MyPackageClass.java** escribimos y esta sera ejecutada.
+
+```cmd
+C:\Users\Your Name>java mypack.MyPackageClass
+This is my package!
+```
+## Java Herencia
+### Java Inheritance (Subclases y Superclases)
+En java, es posible heredar atrubutos y metodos de una clase a otra, a esto lo llamamos **"Herencia"**, la cual esta dividida en dos categorias:
+ - **subclase** (hijo) - la clase hereda desde otra clase
+ - **superclase** (padre) - la clase de la cual es heredada
+
+Para heredar desde una clase usamos la palabra clave `extends`.
+> Ejemplo: Clase `Auto` (subclase), hereda atributos y metodos de la clase `Vehiculo` (superclase):
+```java
+class Vehiculo {
+  protected String marca = "Ford";  //atributo vehiculo
+  public void bocina() {  //metodo vehiculo
+    System.out.println("Piii, Pii!");
+  }
+}
+
+class Auto extends Vehiculo {
+  private String modeloNombre = "Mustang";  //atributo auto
+  public void autoMarca(){
+    System.out.println(marca + " " + modeloNombre); //metodo que imprime la marca heredada de vehiculo y el modelo del auto.
+  }
+  public static void main(String[] args) {
+    Auto auto = new Auto();
+    auto.bocina(); //imprime "Piii, Pii!"
+    auto.autoMarca(); //imprime los atrubutos marca y modeloNombre: "Ford Mustang".
+  }
+}
+```
+>Como vimos anteriormente, usamos el modificador `protected` en el atributo marca, para de esta manera poder acceder a el sin que pueda acceder el usuario, en aso contrario si usasemos `private` la subclase auto no tendria acceso a esta.
+
+### Por que ocupar "Herencia"?
+Es util para la reutilizacion del codigo (DRY "Don't Repeat Yourself") y mantener un codigo limpio manteniendo una estructura clara haciendo mas facil su mantencion, modificacion y eventual debugging.
+
+### Palabra Clave `final`
+En el caso de que no queramos que otras clases hereden a nuestra clase, usamos la palabra `final`.
 H~2~O
+>Si intentamos acceder a ella siendo una clase `final`, Java nos generara un error:
+```java
+final class Vehiculo {
+  ...
+}
+
+class Auto extends Vehiculo {
+  ...
+}
+```
+>El resultado sera algo asi:
+```cmd
+Main.java:9: error: cannot inherit from final Vehicle
+class Main extends Vehiculo {
+                  ^
+1 error)
+```
+---
+## Polimorfismo
+### Polimorfismo en Java
+Polimorfismo se define como "muchas formas", y se produce cuando tenemos muchas clases relacionadas entre si por herencia.
+
+Como vimos anteriormente la **Herencia** nos permite heredar atributos y metodos de otra clase. **Polimorfismo** usa aquellos metodos para realizar diversas tareas. Permitiendonos hacer una misma accion de diversas maneras.
+
+Por ejemplo, pensemos en una super clase llamada `Animal` que tiene un metodo llamado `sonidoAnimal()`. Las sublcases de `Animal` podrian ser Cerdos, Gatos, Perros, Aves, etc y que cada uno de ellos tenga su propia implementacion de un sonido animal (el cerdo oink, el gato miau, etc);
+>usamos la palabra clave `extends` para heredar desde una clase
+```java
+class Animal {
+  public void sonidoAnimal() {
+    System.out.println("El animal hace sonido");
+  }
+}
+
+class Chanchito extends Animal {
+  public void sonidoAnimal() {
+    System.out.println("The Chanchito says: oink oink");
+  }
+}
+
+class Perro extends Animal {
+  public void sonidoAnimal() {
+    System.out.println("The Perro says: guau guau");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    //creamos objeto Animal, Chanchito y Perro
+    Animal miAnimal = new Animal();
+    Animal miChanchito = new Chanchito();
+    Animal miPerro = new Perro();
+    //llamamos al medoto sonidoAnimal de cada uno
+    miAnimal.sonidoAnimal();
+    miChanchito.sonidoAnimal();
+    miPerro.sonidoAnimal();
+  }
+}
+```
+---
