@@ -526,3 +526,9 @@ class Main {
 }
 ```
 ---
+## Java Inner Classes
+### CLases Internas en Java
+En java es posible anidar clases (Una clase dentro de otra). El proposito de anidar clases es agrupar las clases y hacer que estas sean mas legibles y mantenible.
+
+Para acceder a una clase interior, se debe crear un objeto de la clase exterior luego crear un objeto de la clase interior:
+> Ejemplo:
