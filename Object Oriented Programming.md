@@ -38,6 +38,13 @@
     - [Palabra Clave `final`](#palabra-clave-final)
   - [Polimorfismo](#polimorfismo)
     - [Polimorfismo en Java](#polimorfismo-en-java)
+  - [Java Inner Classes](#java-inner-classes)
+    - [CLases Internas en Java](#clases-internas-en-java)
+  - [Java Exceptions](#java-exceptions)
+    - [Excepciones en Java](#excepciones-en-java)
+    - [Java try and catch](#java-try-and-catch)
+    - [Finally](#finally)
+    - [`throw` Keyword](#throw-keyword)
 ---
 ## Que es OOP?
 - **Programacion Procedural**: crear metodos o operaciones en base a datos.
@@ -532,3 +539,109 @@ En java es posible anidar clases (Una clase dentro de otra). El proposito de ani
 
 Para acceder a una clase interior, se debe crear un objeto de la clase exterior luego crear un objeto de la clase interior:
 > Ejemplo:
+
+
+## Java Exceptions
+### Excepciones en Java
+Cuando ejecutamos un codigo en Java, diferentes errores pueden ocurrir, debido a errores de codificacion, entrada u otros.
+
+Cuando se produce un error, Java normalmente se detiene y genera un mensaje de error. El termino tecnico para esto es: Java lanzara una **Excepcion** (lanzara un error).
+### Java try and catch
+La palabra clave `try` permite definir un bloque de codigo para que se compruebe si hay errores mientras se ejecuta.
+
+La palabra `catch` permite definir un bloque de codigo que se ejecutara si se produce un error en el bloque `try`.
+
+La palabra `try` y `catch` vienen en pares.
+
+```java
+try {
+  // Bloque de codigo a probar
+}
+catch(Exception e) {
+  // Bloque de codigo para gestionar el error
+}
+```
+
+Cosideramos el siguiente ejemplo:
+```java
+public class Main {
+  public static void main(String[ ] args) {
+    int[] myNumbers = {1, 2, 3};
+    System.out.println(myNumbers[10]); // error!
+  }
+}
+```
+El output seria algo asi:
+```
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 10
+        at Main.main(Main.java:4)
+```
+En caso de ocurrir, podriamos ocupar `try...catch`para atrapar el error y ejecutar algun codigo para manejarlo.
+```java
+public class Main {
+  public static void main(String[ ] args) {
+    try {
+      int[] myNumbers = {1, 2, 3};
+      System.out.println(myNumbers[10]);
+    } catch (Exception e) {
+      System.out.println("Something went wrong.");
+    }
+  }
+}
+```
+> Output:
+```
+Something went wrong.
+```
+
+### Finally
+La palabra clave `finally` permite ejecutar codigo despues del `try...catch`, independiente del resultado:
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    try {
+      int[] myNumbers = {1, 2, 3};
+      System.out.println(myNumbers[10]);
+    } catch (Exception e) {
+      System.out.println("Something went wrong.");
+    } finally {
+      System.out.println("The 'try catch' is finished.");
+    }
+  }
+}
+```
+>Output
+```
+Something went wrong.
+The 'try catch' is finished.
+```
+### `throw` Keyword
+La palabra clave `throw` permite crear un error personalizado.
+
+La sentencia `throw` se utiliza junto con un tipo de **excepcion**. Hay muchas tipos de excepcion disponibles en Java: `ArithmeticException`, `FileNotFoundException`, `ArrayIndexOutOfBoundsException`, `SecurityException`, etc.
+
+> Lanzar una excepcion si la **edad** es menos a 18 (imprimir "Acceso denegado!"), en caso contrario imprimir "Acceso concedido".
+```java
+public class Main {
+  static void checkAge(int age) {
+    if (age < 18) {
+      throw new ArithmeticException("Access denied - You must be at least 18 years old.");
+    }
+    else {
+      System.out.println("Access granted - You are old enough!");
+    }
+  }
+
+  public static void main(String[] args) {
+    checkAge(15); // Set age to 15 (which is below 18...)
+  }
+}
+```
+>Output:
+```
+Exception in thread "main" java.lang.ArithmeticException: Access denied - You must be at least 18 years old.
+        at Main.checkAge(Main.java:4)
+        at Main.main(Main.java:12)
+```
+---
